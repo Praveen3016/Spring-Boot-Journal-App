@@ -47,14 +47,6 @@ public class Controller {
     {
         return journalEntries.put(id , journalEntry) ;
     }
-
-//    @DeleteMapping
-//    public boolean deleteAll()
-//    {
-//        journalEntries.remove();
-//        return true ;
-//    }
-//
-
+    
 
 }
