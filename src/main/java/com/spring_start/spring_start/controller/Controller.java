@@ -75,7 +75,7 @@ public class Controller {
     public ResponseEntity<JournalEntry> updateEntry(
             @PathVariable ObjectId id ,
             @RequestBody JournalEntry updatingJE,
-            @PathVariable String username 
+            @PathVariable String username
             )
     {
         JournalEntry old = journalEntryService.getById(id).orElse(null);
