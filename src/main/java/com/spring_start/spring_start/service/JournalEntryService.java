@@ -7,6 +7,7 @@ import com.spring_start.spring_start.repository.UsersRepo;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,7 +23,7 @@ public class JournalEntryService {
     private UsersService usersService;
 
 
-
+@Transactional
     public JournalEntry saveEntry(JournalEntry journalEntry, String username)
     {
         Users user = usersService.findByUserName(username);
@@ -51,10 +52,20 @@ public class JournalEntryService {
 
     public boolean deleteById(ObjectId id, String username)
     {
-        Users user = usersService.findByUserName(username);
-        user.getJournalEntryList().removeIf(x -> x.getId().equals(id));
-        usersService.saveUser(user);
-        journalEntryRepo.deleteById(id);
+        try {
+            Users user = usersService.findByUserName(username);
+            boolean removed =  user.getJournalEntryList().removeIf(x -> x.getId().equals(id));
+            if(removed){
+                usersService.saveUser(user);
+                journalEntryRepo.deleteById(id);
+            }
+        }catch(Exception e)
+        {
+            System.out.println(e);
+            throw new RuntimeException("An error occurred while deleting the entry" ,e);
+        }
+
+
         return true ;
     }
 
