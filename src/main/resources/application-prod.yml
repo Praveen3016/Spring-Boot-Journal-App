@@ -1,0 +1,11 @@
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://praveensuthar3016:praveensuthar3016@connect.inspjgz.mongodb.net/journaldb?retryWrites=true&w=majority&appName=connect
+      auto-index-creation: true
+  main:
+    allow-circular-references : true
+
+server:
+  port : 8081
