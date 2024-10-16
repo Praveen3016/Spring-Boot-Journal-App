@@ -1,0 +1,24 @@
+<configuration>
+
+    <!-- Console Appender -->
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender -->
+    <appender name="myAppAppender" class="ch.qos.logback.core.FileAppender">
+        <file>spring_start.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myAppAppender"/>
+    </root>
+
+</configuration>
