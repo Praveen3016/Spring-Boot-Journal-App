@@ -2,9 +2,11 @@ package com.spring_start.spring_start.controller;
 
 import com.spring_start.spring_start.Entity.JournalEntry;
 import com.spring_start.spring_start.Entity.Users;
+import com.spring_start.spring_start.api.response.WeatherResponse;
 import com.spring_start.spring_start.repository.UsersRepo;
 import com.spring_start.spring_start.service.JournalEntryService;
 import com.spring_start.spring_start.service.UsersService;
+import com.spring_start.spring_start.service.WeatherService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,6 +52,23 @@ public class UsersController {
         String username = authentication.getName();
         userRepo.deleteByUsername(username);
         return new ResponseEntity<>("userDeleted" , HttpStatus.OK);
+    }
+
+    @Autowired
+    private WeatherService weatherService ;
+
+    @GetMapping
+    public ResponseEntity<?> grittings()
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WeatherResponse weatherResponse = weatherService.getWeatherData("Mumbai");
+        String greeting = "" ;
+        if(weatherResponse != null)
+        {
+            greeting = "hi weather is" +  weatherResponse.getMain().getFeelslike();
+
+        }
+        return new ResponseEntity<>("hi  " + authentication.getName() + greeting   , HttpStatus.OK);
     }
 
 

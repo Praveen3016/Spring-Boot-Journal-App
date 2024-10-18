@@ -10,3 +10,7 @@ spring:
 
 server:
   port : 8080
+
+weather:
+  api:
+    key: 053cdeb7f62980d082a34372472cf71b
