@@ -2,7 +2,6 @@ package com.spring_start.spring_start.Entity;
 
 
 import jakarta.persistence.Id;
-import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,23 +11,17 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.List;
 
-@Document(collection = "users")
+@Document(collection = "config_journal_app")
 @Data
 @NoArgsConstructor
-public class Users {
+
+public class ConfigJournalAppEntity {
 
     @Id
     private ObjectId id ;
-    @Indexed(unique = true)
-    @NonNull
-    private String username ;
-    private String email ;
-    private boolean sentimentAnalysis ;
-    @NonNull
-    private String password ;
-   @DBRef
-    private List<JournalEntry> journalEntryList = new ArrayList<>();
-    private List<String> roles ;
+    private String key ;
+    private String value ;
 
 }
