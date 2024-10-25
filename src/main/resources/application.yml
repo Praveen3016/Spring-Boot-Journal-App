@@ -1,10 +1,26 @@
 
 
 spring:
+  redis:
+    host: redis-15426.c276.us-east-1-2.ec2.redns.redis-cloud.com
+    port: 15426
+    password: 7mv03LG46BR1RmpOCTjT8DCXnRafNWKy
+#    uri: redis://default:7mv03LG46BR1RmpOCTjT8DCXnRafNWKy@redis-15426.c276.us-east-1-2.ec2.redns.redis-cloud.com:15426
   data:
     mongodb:
       uri: mongodb+srv://praveensuthar3016:praveensuthar3016@connect.inspjgz.mongodb.net/journaldb?retryWrites=true&w=majority&appName=connect
       auto-index-creation: true
+  mail :
+    host : smtp.gmail.com
+    port : 587
+    username : praveensuthar3016@gmail.com
+    password : tkzj olmf sxwi rkhv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   main:
     allow-circular-references : true
 

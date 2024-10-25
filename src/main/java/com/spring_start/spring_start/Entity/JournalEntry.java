@@ -1,5 +1,6 @@
 package com.spring_start.spring_start.Entity;
 
+import com.spring_start.spring_start.enume.Sentiment;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class JournalEntry {
     private String title ;
     private String content ;
     private LocalDateTime date ;
+    private Sentiment sentiment ;
 
 }
